@@ -51,7 +51,7 @@ userSchema.pre("save", async function (next) {
   // ye isilye kara humne kuki ye br br password ko save krega hume usse bachna hai to humne yaha condition laga di ki agr password me koi modification hua h to hi hash krke save krna nahi hua to return krdo waps to isme hum keh rhe hai ki nahi hua to return
   if (!this.isModified("password")) return next();
 
-  this.password = bcrypt.hash(this.password, 10);
+  this.password = await bcrypt.hash(this.password, 10);
   next();
 });
 
